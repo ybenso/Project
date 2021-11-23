@@ -19,7 +19,7 @@ def plot_stock(data,start,end,use_log=False):
     tickerDf = tickerData.history(period='1d', start=start,end=end)
     if use_log == True:
         df = np.log(tickerDf['Close'])
-    else:
+    if use_log==False:
         df=tickerDf
     fig=plt.figure(figsize=(10,6))
     plt.grid(True)
