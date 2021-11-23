@@ -14,14 +14,18 @@ import math
 def get_stock_data(ticker):
     return yf.Ticker(ticker)
 
-def plot_stock(data,start,end):
+def plot_stock(data,start,end,use_log=False):
     tickerData = data
     tickerDf = tickerData.history(period='1d', start=start,end=end)
+    if use_log == True:
+        df = np.log(tickerDf['Close'])
+    else:
+        df=tickerDf
     fig=plt.figure(figsize=(10,6))
     plt.grid(True)
     plt.xlabel('Date')
     plt.ylabel('Close Prices')
-    plt.plot(tickerDf['Close'])
+    plt.plot(df['Close'])
     plt.title(tickerData.info["longName"]+" Closing Prices")
     st.pyplot(fig)
     
