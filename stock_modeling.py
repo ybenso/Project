@@ -60,7 +60,8 @@ def find_arima(data,start,end,use_log=False):
                       trace=True,
                       error_action='ignore',  
                       suppress_warnings=True, 
-                      stepwise=True)
+                      stepwise=True,
+                      with_intercept=True)
     
     pred,conf_int=model_autoARIMA.predict(n_periods=len(test_data),return_conf_int=True,alpha=0.05)
     pred_series = pd.Series(pred, index=test_data.index)
