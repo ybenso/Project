@@ -24,7 +24,6 @@ if st.button(label="Plot stock"):
 
 if st.button(label="Fit ARIMA model"):
     model,train_data,test_data = find_arima(stock_data,start,end,use_log)
-    n_days=len(test_data)
 
 
 #n_days = st.number_input('Adjust the forecast window',value=len(test_data))
@@ -33,4 +32,4 @@ if st.button(label="Fit ARIMA model"):
 
 
 if st.button(label="Forecast"):
-    forecast(stock_data,model,train_data,test_data,n_days)
+    forecast(stock_data,model,train_data,test_data)

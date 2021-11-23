@@ -68,9 +68,9 @@ def find_arima(data,start,end,use_log=False):
 
     return model_autoARIMA,train_data,test_data
 
-def forecast(data,ARIMA_model,train_data,test_data,n_days):
+def forecast(data,ARIMA_model,train_data,test_data):
     tickerData=data
-    pred,conf_int=ARIMA_model.predict(n_periods=n_days,return_conf_int=True,alpha=0.05)
+    pred,conf_int=ARIMA_model.predict(n_periods=len(test_data),return_conf_int=True,alpha=0.05)
     pred_series = pd.Series(pred, index=test_data.index)
 
     lower_series = pd.Series(conf_int[:, 0], index=test_data.index)
