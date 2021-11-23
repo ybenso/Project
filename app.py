@@ -20,12 +20,13 @@ use_log = st.checkbox('Use log')
 
 if st.button(label="Plot stock"):
     plot_stock(stock_data,start,end,use_log)
+    
 
 if st.button(label="Fit ARIMA model"):
     model,train_data,test_data = find_arima(stock_data,start,end,use_log)
+    n_days=len(test_data)
 
 
-n_days=len(test_data)
 #n_days = st.number_input('Adjust the forecast window',value=len(test_data))
 #st.write('The current forecast window is ', n_days)
 
