@@ -38,7 +38,7 @@ def find_arima(data,start,end,use_log=False):
     if use_log == True:
         df = np.log(tickerDf['Close'])
     else:
-        df=tickerDf
+        df=tickerDf['Close']
 
     train_data, test_data = df[0:int(len(df)*0.9)], df[int(len(df)*0.9):]
     #plt.figure(figsize=(10,6))
