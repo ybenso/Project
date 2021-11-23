@@ -1,11 +1,14 @@
 import streamlit as st
-from stock_modeling import plot_stock,find_arima
+from stock_modeling import get_stock_data,plot_stock,find_arima
 import datetime
 
 #set_page_title("Stock Forecasting with Times Series Modeling") 
 
+
+
 ticker = st.text_input('Stock Ticker', 'JNJ')
-st.write('The current stock modeled is', ticker)
+stock_data = get_stock_data(ticker)
+st.write('The current stock modeled is', stock_data.info['longName'])
 
 start = st.date_input("Start date",datetime.date(1980, 1, 1))
 st.write('The start date is:', start)
