@@ -4,4 +4,4 @@ pandas
 matplotlib
 streamlit
 pmdarima==1.8.4
-sklearn.metrics
+sklearn
