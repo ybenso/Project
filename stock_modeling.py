@@ -20,12 +20,12 @@ def plot_stock(data,start,end,use_log=False):
     if use_log == True:
         df = np.log(tickerDf['Close'])
     if use_log==False:
-        df=tickerDf
+        df=tickerDf['Close']
     fig=plt.figure(figsize=(10,6))
     plt.grid(True)
     plt.xlabel('Date')
     plt.ylabel('Close Prices')
-    plt.plot(df['Close'])
+    plt.plot(df)
     plt.title(tickerData.info["longName"]+" Closing Prices")
     st.pyplot(fig)
     
