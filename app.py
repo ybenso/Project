@@ -1,5 +1,5 @@
 import streamlit as st
-from stock_modeling import get_stock_data,plot_stock,find_arima
+from stock_modeling import get_stock_data,plot_stock,find_arima,forecast
 import datetime
 
 #set_page_title("Stock Forecasting with Times Series Modeling") 
@@ -22,4 +22,13 @@ if st.button(label="Plot stock"):
     plot_stock(stock_data,start,end,use_log)
 
 if st.button(label="Fit ARIMA model"):
-    find_arima(stock_data,start,end,use_log)
+    model,train_data,test_data = find_arima(stock_data,start,end,use_log)
+
+
+n_days = st.number_input('Adjust the forecast window',value=len(test_data))
+st.write('The current forecast window is ', n_days)
+
+
+
+if st.button(label="Forecast"):
+    forecast(stock_data,model,train_data,test_data,n_days)

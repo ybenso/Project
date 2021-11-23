@@ -61,9 +61,16 @@ def find_arima(data,start,end,use_log=False):
                       error_action='ignore',  
                       suppress_warnings=True, 
                       stepwise=True,
-                      with_intercept=True)
+                      with_intercept="auto")
     
-    pred,conf_int=model_autoARIMA.predict(n_periods=len(test_data),return_conf_int=True,alpha=0.05)
+    
+    st.write(model_autoARIMA.summary())
+
+    return model_autoARIMA,train_data,test_data
+
+def forecast(data,ARIMA_model,train_data,test_data,n_days):
+    tickerData=data
+    pred,conf_int=ARIMA_model.predict(n_periods=n_days,return_conf_int=True,alpha=0.05)
     pred_series = pd.Series(pred, index=test_data.index)
 
     lower_series = pd.Series(conf_int[:, 0], index=test_data.index)
@@ -81,7 +88,9 @@ def find_arima(data,start,end,use_log=False):
     plt.ylabel(tickerData.info["longName"]+" Closing Price")
     plt.legend(loc='upper left', fontsize=8)
 
-    return st.write(model_autoARIMA.summary()),st.pyplot(model_autoARIMA.plot_diagnostics(figsize=(15,8))),st.pyplot(fig)
+    return st.pyplot(fig)
+
+
 
 '''
 
