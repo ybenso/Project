@@ -19,7 +19,7 @@ st.write('The end date is:', end)
 use_log = st.checkbox('Use log')
 
 if st.button(label="Plot stock"):
-    plot_stock(stock_data,start,end)
+    plot_stock(stock_data,start,end,use_log)
 
 if st.button(label="Fit ARIMA model"):
     find_arima(ticker,start,end,use_log)
