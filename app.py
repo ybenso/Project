@@ -22,4 +22,4 @@ if st.button(label="Plot stock"):
     plot_stock(stock_data,start,end,use_log)
 
 if st.button(label="Fit ARIMA model"):
-    find_arima(ticker,start,end,use_log)
+    find_arima(stock_data,start,end,use_log)
