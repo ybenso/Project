@@ -25,8 +25,9 @@ if st.button(label="Fit ARIMA model"):
     model,train_data,test_data = find_arima(stock_data,start,end,use_log)
 
 
-n_days = st.number_input('Adjust the forecast window',value=len(test_data))
-st.write('The current forecast window is ', n_days)
+n_days=len(test_data)
+#n_days = st.number_input('Adjust the forecast window',value=len(test_data))
+#st.write('The current forecast window is ', n_days)
 
 
 
