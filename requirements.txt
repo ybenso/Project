@@ -1,8 +1,7 @@
-yfinance
-os
+yfinance==0.1.67
 numpy
 pandas
 matplotlib.pyplot
 streamlit
-pmdarima.arima
+pmdarima.arima==1.8.4
 sklearn.metrics
