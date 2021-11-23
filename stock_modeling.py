@@ -23,19 +23,18 @@ def plot_stock(data,start,end):
     plt.ylabel('Close Prices')
     plt.plot(tickerDf['Close'])
     plt.title(tickerData.info["longName"]+" Closing Prices")
-    #plt.show()
     st.pyplot(fig)
     
 
-
-
-#plot close price
-
-def find_arima(ticker,start,end):
-    tickerData = yf.Ticker(ticker)
+def find_arima(data,start,end,use_log=False):
+    tickerData = data
     tickerDf = tickerData.history(period='1d', start=start,end=end)
-    df_log = np.log(tickerDf['Close'])
-    train_data, test_data = df_log[0:int(len(df_log)*0.9)], df_log[int(len(df_log)*0.9):]
+    if use_log == True:
+        df = np.log(tickerDf['Close'])
+    else:
+        df=tickerDf
+
+    train_data, test_data = df[0:int(len(df)*0.9)], df[int(len(df)*0.9):]
     #plt.figure(figsize=(10,6))
     #plt.grid(True)
     #plt.xlabel('Dates')
